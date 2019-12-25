@@ -7,7 +7,7 @@ Since the creation of Rtfl, its speed has been a major drag on usefulness and us
  - Robustness
  - Improved debugging
 
-## How does Rtflc fulfill these requirements?t 
+## How does Rtflc fulfill these requirements
 To understand how Rtflc is an improvement on the original Rtfl interpreter, we must first understand how the original Rtfl interpreter worked. The original interpreter did not split up its execution and parsing mechanisms, instead executing each line as it parsed it. The effect of this is that execution was throttled to the speed of parsing, which is [not very good](https://github.com/termermc/rtfl/blob/c6d785a39353af4f1779d86064d307027d5bd078/src/net/termer/rtfl/expressions/Expressions.java#L50).
 
 Rtflc, on the other hand, splits up parsing and execution into different components. The parsing component takes in source code and produces intermediate instructions which it then feeds to the executor. Since the parser can parse multiple lines into instructions and runs faster than the original interpreter, it allow the executor to work much faster. Loops are also faster, since instead of re-parsing the loop body, the entire body is translated into instructions that the executor can re-use. 
