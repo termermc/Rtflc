@@ -836,7 +836,7 @@ public class StandardFunctions {
 						
 						len = new IntType(arr.size());
 					} else {
-						throw new RuntimeException("Did not provide array to mearsure");
+						throw new RuntimeException("Did not provide array to measure");
 					}
 				} else {
 					throw new RuntimeException("Must provide at least 1 argument");
