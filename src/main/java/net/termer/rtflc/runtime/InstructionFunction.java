@@ -25,6 +25,7 @@ public class InstructionFunction implements RtflFunction {
 	/**
 	 * Instantiates a new InstructionFunction with the provided instructions and argument names
 	 * @param instructions the instructions to store in this function
+	 * @param argumentNames The names of this function's arguments
 	 * @since 1.0
 	 */
 	public InstructionFunction(RtflInstruction[] instructions, String[] argumentNames) {

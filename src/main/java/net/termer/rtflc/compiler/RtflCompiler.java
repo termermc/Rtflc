@@ -39,7 +39,7 @@ public class RtflCompiler {
 	
 	/**
 	 * Instantiates a new Rtfl compiler with the provided settings
-	 * @param options
+	 * @param options Compiler options
 	 */
 	public RtflCompiler(CompilerOptions options) {
 		_options = options;

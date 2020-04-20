@@ -68,6 +68,7 @@ public class BytecodeInstructionProducer {
 	 * @param src the bytecode source's name (does not have to be filename)
 	 * @param in the InputStream from which to read bytecode
 	 * @param cons the InstructionConsumer to consume produced instructions
+	 * @param readLines whether the source input has line numbers included that should be read
 	 * @throws IOException if reading from the input fails
 	 * @throws ProducerException if a bytecode parsing or reading error occurs
 	 * @throws RuntimeException If consumer fails when finish() is called

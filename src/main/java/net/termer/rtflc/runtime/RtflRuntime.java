@@ -234,7 +234,6 @@ public class RtflRuntime {
 	/**
 	 * Executes an Rtfl file (script or bytecode) at top level
 	 * @param file The file to execute
-	 * @param scope The scope in which to execute te file
 	 * @return The RtflType value returned by the file, a NullType if nothing
 	 * @throws IOException If reading the file fails
 	 * @throws RuntimeException If executing the file fails
@@ -634,7 +633,6 @@ public class RtflRuntime {
 	 * @param object The object containing the method 
 	 * @param name The name of the method
 	 * @param parameters The method's parameter types
-	 * @param importName What the new function should be named
 	 * @return This, to the used fluently
 	 * @throws NoSuchMethodException If the specified method (and its specified parameters) does not exist
 	 * @throws SecurityException If the method cannot be accessed

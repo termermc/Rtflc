@@ -14,7 +14,7 @@ public enum LogicComparison {
 	
 	/**
 	 * Returns the LogicComparison corresponding to a comparison character.
-	 * Valid characters are: =, &, |, >, < 
+	 * Valid characters are: =, &amp;, |, &gt;, &lt;
 	 * @param ch The character to check
 	 * @return The LogicComparison corresponding to the provided character, or null if character has no LogicComparison associated with it
 	 * @since 1.0

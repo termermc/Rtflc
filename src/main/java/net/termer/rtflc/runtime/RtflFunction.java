@@ -18,6 +18,7 @@ public interface RtflFunction {
 	 * @param runtime the Runtime to use for executing this function
 	 * @param scope the scope in which to execute this function
 	 * @return the return value of this function. Should be NullType if none.
+	 * @throws RuntimeException if a runtime error occurs during the execution of this function
 	 * @since 1.0
 	 */
 	public RtflType run(RtflType[] args, RtflRuntime runtime, Scope scope) throws RuntimeException;
