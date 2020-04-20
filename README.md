@@ -15,11 +15,28 @@ Rtflc, on the other hand, splits up parsing and execution into different compone
 ## Rtfl bytecode
 Like many previously interpreted languages have done, Rtfl now utilizes bytecode, which is effectively a high level implementation of basic instructions. Interpreting source code is far more expensive than executing bytecode, and as such, Rtflc can compile Rtfl source code into bytecode binaries that can be executed by Rtflc.
 
-## Compiling
-To compile (assuming you have Maven, if not, install it), you need to run `mvn install` in the source code root, and a file named `Rtflc-X.X-jar-with-dependencies.jar` will be created in the `target/` directory.
+## Getting it
+You can either download Rtflc from the [releases](https://github.com/termermc/rtflc/releases) tab, or you can compile it.
+To compile, you need to run either `gradlew.bat shadowJar` (on Windows) or `./gradlew shadowJar` (on Mac, Linux, Unix) in the source code root, and a file named `Rtflc-X.X-all.jar` will be created in the `build/libs/` directory.
 
 ## Embedding Rtfl
-Embedding Rtfl in an existing Java application is as simple as including the Rtflc jar, and adding the following code to your project:
+To embed Rtfl, you will need to include the jar, either via Maven/Gradle, or by manually adding it to your project.
+To use with Maven:
+```xml
+<dependency>
+    <groupId>net.termer.rtflc</groupId>
+    <artifactId>Rtflc</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+To use with Gradle:
+```groovy
+dependencies {
+    implementation 'net.termer.rtflc:Rtflc:1.0'
+}
+```
+
+Using Rtflc in your project is as simple as adding the following code to your project:
 ```java
 RtflRuntime runtime new RtflRuntime();
 ```
