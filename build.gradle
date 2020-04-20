@@ -1,56 +1,12 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
-    id 'com.bmuschko.nexus' version '2.3.1'
-    id 'java'
-    id 'application'
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
-archivesBaseName = 'Rtflc'
-group = "net.termer.rtflc"
-version = "1.0"
-
-modifyPom {
-    project {
-        name 'Rtflc'
-        description 'Higher performance Rtfl runtime'
-        url 'https://github.com/termermc/rtflc'
-        inceptionYear '2019'
-
-        scm {
-            url 'https://github.com/termermc/rtflc'
-            connection 'scm:https://github.com/termermc/rtflc.git'
-            developerConnection 'scm:git://github.com/termermc/rtflc.git'
-        }
-
-        licenses {
-            license {
-                name 'MIT License'
-                url 'https://opensource.org/licenses/MIT'
-                distribution 'repo'
-            }
-        }
-
-        developers {
-            developer {
-                id 'termer'
-                name 'Michael Termer'
-                email 'termer@protonmail.com'
-            }
-        }
-    }
-}
-
-extraArchive {
-    sources = true
-    tests = true
-    javadoc = true
-}
-
-nexus {
-    sign = true
-    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
-}
+group = 'com.example'
+version = '1.0'
 
 jar {
     manifest {
@@ -74,7 +30,66 @@ dependencies {
     implementation 'org.json:json:20190722'
 }
 
-application {
-    // Define the main class for the application.
-    mainClassName = 'net.termer.rtflc.Main'
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'Rtflc'
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = 'Rtflc'
+                description = 'Advanced and high(er) permformance Rtfl runtime and compiler'
+                url = 'https://github.com/termermc/rtflc'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'termer'
+                        name = 'Michael Termer'
+                        email = 'termer@protonmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/termermc/rtflc.git'
+                    developerConnection = 'scm:git:ssh://github.com/termermc/rtflc.git'
+                    url = 'https://github.com/termermc/rtflc'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            // change URLs to point to your repos, e.g. http://my.org/repo
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
