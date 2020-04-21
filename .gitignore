@@ -33,3 +33,6 @@ gradle
 
 # IntelliJ
 .idea
+
+# Documentation
+doc
