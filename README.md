@@ -26,13 +26,13 @@ To use with Maven:
 <dependency>
     <groupId>net.termer.rtflc</groupId>
     <artifactId>Rtflc</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 </dependency>
 ```
 To use with Gradle:
 ```groovy
 dependencies {
-    implementation 'net.termer.rtflc:Rtflc:1.1'
+    implementation 'net.termer.rtflc:Rtflc:1.2'
 }
 ```
 
