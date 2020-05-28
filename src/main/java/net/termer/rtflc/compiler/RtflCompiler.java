@@ -188,11 +188,11 @@ public class RtflCompiler {
 									if(compPath.endsWith(".rtfl"))
 										compPath = compPath.substring(0, compPath.length()-1)+'c';
 									else
-										compPath+=".rtflc";
+										compPath+=".rtfc";
 									
 									// Compile new file if not already compiled
 									if(!comp.loadsCompiled().contains(file.getCanonicalPath())) {
-										if(!file.isFile())
+										if(file.isFile())
 											comp.compile(file, new FileOutputStream(compPath), true);
 										comp.loadsCompiled().add(file.getCanonicalPath());
 									}
@@ -218,11 +218,11 @@ public class RtflCompiler {
 									if(compPath.endsWith(".rtfl"))
 										compPath = compPath.substring(0, compPath.length()-1)+'c';
 									else
-										compPath+=".rtflc";
+										compPath+=".rtfc";
 									
 									// Compile new file if not already compiled
 									if(!comp.requiresLoaded().contains(file.getCanonicalPath())) {
-										if(!file.isFile())
+										if(file.isFile())
 											comp.compile(file, new FileOutputStream(compPath), true);
 										comp.requiresLoaded().add(file.getCanonicalPath());
 									}
