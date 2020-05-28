@@ -16,7 +16,7 @@ import net.termer.rtflc.runtime.RtflRuntime;
 import net.termer.rtflc.runtime.RuntimeException;
 
 public class Main {
-	public static final double RTFLC_VERSION = 1.1;
+	public static final double RTFLC_VERSION = 1.2;
 	public static final double RTFL_VERSION = 1.4;
 	
 	@SuppressWarnings("unchecked")
