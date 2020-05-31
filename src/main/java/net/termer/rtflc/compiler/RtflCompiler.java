@@ -177,6 +177,7 @@ public class RtflCompiler {
 									
 									writeInst = false;
 									cons.consume(new DescendScopeInstruction());
+									swapSource(file.getName(), comp, out);
 									comp.compile(file, out, false);
 									swapSource(inst.originFile(), comp, out);
 									cons.consume(new AscendScopeInstruction());
@@ -206,6 +207,7 @@ public class RtflCompiler {
 									writeInst = false;
 									if(!comp.requiresLoaded().contains(file.getCanonicalPath())) {
 										cons.consume(new DescendScopeInstruction());
+										swapSource(file.getName(), comp, out);
 										comp.compile(file, out, false);
 										swapSource(inst.originFile(), comp, out);
 										cons.consume(new AscendScopeInstruction());
