@@ -34,11 +34,13 @@ public class JavaInteropFunctions {
 		
 		// Find constructor
 		Constructor<?> cons = null;
-		for(Constructor<?> con : clazz.getConstructors())
+		for(Constructor<?> con : clazz.getConstructors()) {
+			con.setAccessible(true);
 			if(ClassUtils.classesMatch(types, con.getParameterTypes())) {
 				cons = con;
 				break;
 			}
+		}
 		
 		if(cons == null)
 			throw new RuntimeException("No constructor exists with the specified argument types");
@@ -55,11 +57,13 @@ public class JavaInteropFunctions {
 		
 		// Find method
 		Method mtd = null;
-		for(Method m : clazz.getMethods())
+		for(Method m : clazz.getMethods()) {
+			m.setAccessible(true);
 			if(m.getName().equals(name) && ClassUtils.classesMatch(types, m.getParameterTypes())) {
 				mtd = m;
 				break;
 			}
+		}
 		
 		return mtd.invoke(object, args);
 	}
