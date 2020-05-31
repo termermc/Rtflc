@@ -1375,7 +1375,7 @@ public class StandardFunctions {
 							);
 					}
 				} else {
-					throw new RuntimeException("Musst provide at least two arguments");
+					throw new RuntimeException("Must provide at least two arguments");
 				}
 				
 				return new NullType();
